@@ -1,30 +1,28 @@
-// Function to convert Celsius to Fahrenheit
-function toFahrenheit(degrees) {
-  return Math.round(degrees * 1.8 + 32);
+function toFahrenheit(degrees) {// converts celuis to fahreneit which is nice
+  return Math.round(degrees * 1.8 + 32); // does a little calculation
 }
 
-// Function to fetch and display weather data
-async function getCityWeather() {
-  const apiKey = 'a12e2390dac14b21b229d51e7cbe0488'; // API key
-  const city = prompt('What city do you want the temperature of?'); // Prompt user for a city name
+async function getCityWeather() { // the main function
+  const apiKey = 'a12e2390dac14b21b229d51e7cbe0488'; // api key does expire on dec 16 bc I didnt change it and im not sure how to get a new one without an new email
+  const city = prompt('What city do you want the weather of?'); // sends a pop up to type in the city name
 
  
 
-  const url = `https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}&include=minutely`;
+  const url = `https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}&include=minutely`; // sets the url to a variable to make easier to use later
 
-  console.log('Fetching weather data...');//if you type a nonexistent city this just kind of displays forever
+  console.log('Fetching weather data...'); // if you type a nonexistent city this just kind of displays forever
 
   try {
     const response = await fetch(url); // gets the information from the api
     
-    const data = await response.json(); // e
-    const weatherData = data.data[0];
+    const data = await response.json(); // gets the the data and converts it into something js can work with
+    const weatherData = data.data[0]; // gets just the weather portion of all the text we just got
 
-    const weatherDesc = weatherData.weather.description; // gets the weather
+    const weatherDesc = weatherData.weather.description; // gets the specific weather like rainy or snowy 
     const temp = toFahrenheit(weatherData.temp); // calls the function to convert celsius to fahrneit
-    // Display the results in the console
-      console.log(`Weather: ${weatherDesc}\n${temp} Degrees Fahrenheit`)
-  } catch(error){
+   
+      console.log(`Weather: ${weatherDesc}\n${temp} Degrees Fahrenheit`) // prints the results
+  } catch(error){ // fixed an error I was having, im not really sure why but I think its a catch all
 
    }finally{
    
@@ -32,7 +30,4 @@ async function getCityWeather() {
    
   }
 
-
-
-// Call the function to start the program
-getCityWeather();
+getCityWeather();// calls the function
