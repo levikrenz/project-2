@@ -1,5 +1,5 @@
 // Function to convert Celsius to Fahrenheit
-function ToFar(degrees) {
+function toFahrenheit(degrees) {
   return Math.round(degrees * 1.8 + 32);
 }
 
@@ -21,14 +21,18 @@ async function getCityWeather() {
     const weatherData = data.data[0];
 
     const weatherDesc = weatherData.weather.description; // gets the weather
-    const temp = toFar(weatherData.temp); // calls the function to convert celsius to fahrneit
-      console.log(`Weather: ${weatherDesc}\n${temp} Degrees Fahrenheit`) //displays the information
-  } catch(error){ 
+    const temp = toFahrenheit(weatherData.temp); // calls the function to convert celsius to fahrneit
+    // Display the results in the console
+      console.log(`Weather: ${weatherDesc}\n${temp} Degrees Fahrenheit`)
+  } catch(error){
 
-   }finally{ 
+   }finally{
    
    }
    
   }
 
-getCityWeather(); // calls the code
+
+
+// Call the function to start the program
+getCityWeather();
