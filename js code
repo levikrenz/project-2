@@ -1,0 +1,34 @@
+// Function to convert Celsius to Fahrenheit
+function ToFar(degrees) {
+  return Math.round(degrees * 1.8 + 32);
+}
+
+// Function to fetch and display weather data
+async function getCityWeather() {
+  const apiKey = 'a12e2390dac14b21b229d51e7cbe0488'; // API key
+  const city = prompt('What city do you want the temperature of?'); // Prompt user for a city name
+
+ 
+
+  const url = `https://api.weatherbit.io/v2.0/current?city=${city}&key=${apiKey}&include=minutely`;
+
+  console.log('Fetching weather data...');//if you type a nonexistent city this just kind of displays forever
+
+  try {
+    const response = await fetch(url); // gets the information from the api
+    
+    const data = await response.json(); // e
+    const weatherData = data.data[0];
+
+    const weatherDesc = weatherData.weather.description; // gets the weather
+    const temp = toFar(weatherData.temp); // calls the function to convert celsius to fahrneit
+      console.log(`Weather: ${weatherDesc}\n${temp} Degrees Fahrenheit`) //displays the information
+  } catch(error){ 
+
+   }finally{ 
+   
+   }
+   
+  }
+
+getCityWeather(); // calls the code
